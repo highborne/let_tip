@@ -77,12 +77,12 @@ export const useBillSplitStore = defineStore('billSplit', () => {
             }
         }
 
+        const conversionRate = selectedCurrency.value.exchangeRateToBRL;
+
         const decimalTipValue = tipPercentage / 100
         const tipValue = billValue * decimalTipValue
         const billPlusTipTotal = billValue + tipValue
         const perPerson = billPlusTipTotal / numberOfPeople
-
-        const conversionRate = selectedCurrency.value.exchangeRateToBRL;
         const perPersonInBRL = perPerson * conversionRate;
 
         return {

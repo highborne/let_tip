@@ -11,15 +11,18 @@ export const CURRENCY_MAP = {
     symbol: 'R$',
     name: 'Real Brasileiro',
   },
+  
 } as const;
 
 export type CurrencyType = keyof typeof CURRENCY_MAP; 
+
+type ValidCurrencySymbols = typeof CURRENCY_MAP[keyof typeof CURRENCY_MAP]['symbol'];
+
+export type CurrencySymbolType = ValidCurrencySymbols | '?';
 
 export interface CurrencyState {
     code: CurrencyType;
     exchangeRateToBRL: number;
 }
-
-export type CurrencySymbolType = typeof CURRENCY_MAP[CurrencyType]['symbol'];
 
 export type CurrencyInfo = typeof CURRENCY_MAP[CurrencyType];
