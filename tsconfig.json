@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
@@ -11,17 +16,13 @@
     "noEmit": true,
     "types": ["vite/client", "node"],
 
-     "resolveJsonModule": true,
+    "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
 
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
-
+    
     "allowJs": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue", "vite.config.*", "eslint.config.js"],
