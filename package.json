@@ -14,9 +14,11 @@
     "format": "prettier --write .",
     "test": "vitest",
     "test:ui": "vitest --ui",
+    "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@pinia/testing": "^1.0.3",
     "@tailwindcss/vite": "^4.1.17",
     "@types/lodash": "^4.17.20",
     "@vee-validate/zod": "^4.15.1",

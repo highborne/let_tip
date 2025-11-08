@@ -35,7 +35,7 @@ export const useBillSplitStore = defineStore('billSplit', () => {
   }
 
   const updateBillState = (key: keyof BillInitialInterface, value: number) => {
-    ;(billStoreState[key] as number) = value
+    (billStoreState[key] as number) = value
   }
 
   const fetchAndSetExchangeRate = async (currencyCode: CurrencyType) => {

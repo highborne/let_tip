@@ -1,53 +1,37 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
+import { debounce } from 'lodash'
 import { toTypedSchema } from '@vee-validate/zod'
-import { billFormSchema, type BillFormSchemaType } from '@/lib/types/billFormSchema'
+
 import { Switch } from '@/components/ui/switch'
-import CurrencyInput from '@/components/billForm/components/CurrencyInput.vue'
+import { billFormSchema, type BillFormSchemaType } from '@/lib/types/billFormSchema'
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import CurrencyInput from '@/components/billForm/components/CurrencyInput.vue'
 import BillFormSlider from '@/components/billForm/components/BillFormSlider.vue'
 import CurrencySymbol from '@/components/ui/currencySymbol/CurrencySymbol.vue'
 import { useForm } from 'vee-validate'
 import { useBillSplitStore } from '@/stores/billSpliteStore'
-import { FormSwitchInterface } from '@/lib/types/billFormTypes'
-import { storeToRefs } from 'pinia'
-import { debounce } from 'lodash'
 
-const { updateSelectedCurrency } = useBillSplitStore()
+import { SLIDER_CONFIGS } from '@/lib/enums' 
+
+
+const { updateSelectedCurrency, updateBillState } = useBillSplitStore()
 const { selectedCurrency, billStoreState, currencySymbol } = storeToRefs(useBillSplitStore())
 
 const isUSD = computed(() => selectedCurrency.value.code === 'USD')
-const sliderConfigs: FormSwitchInterface[] = [
-  {
-    label: 'Gorjeta',
-    default: 13,
-    min: 10,
-    max: 20,
-    step: 1,
-    suffix: '%',
-    modelKey: 'tipPercentage',
-  },
-  {
-    label: 'Pessoas',
-    default: 10,
-    min: 2,
-    max: 16,
-    step: 1,
-    suffix: '',
-    modelKey: 'numberOfPeople',
-  },
-]
+const sliderConfigs = SLIDER_CONFIGS;
 
 const validationSchema = toTypedSchema(billFormSchema)
 const { validate } = useForm<BillFormSchemaType>({
   validationSchema,
   initialValues: {
-    billValue: billStoreState.value.billValue || 0.0,
+    billValue: billStoreState ? billStoreState.value.billValue : 0,
   },
 })
 
 const updateBillValueInStore = (value: number | null) => {
-  billStoreState.value.billValue = value ?? 0
+  return updateBillState('billValue', value ?? 0 )
 }
 const debouncedUpdateBillValue = debounce(updateBillValueInStore, 300)
 

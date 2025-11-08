@@ -1,4 +1,3 @@
-import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -10,6 +9,7 @@ export default defineConfig({
   test: {
     globals: true,        
     environment: 'jsdom', 
+    include: ['src/**/*.{test,spec}.ts'],
     setupFiles: './src/tests/setup.ts',
     coverage: {
       reporter: ['text', 'html'],

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCurrencyInput, CurrencyInputOptions, CurrencyDisplay } from 'vue-currency-input'
-import { defineProps, watch, withDefaults, computed } from 'vue'
+import { watch, computed } from 'vue'
 import Input from '@/components/ui/input/Input.vue'
 
 interface CurrencyConfig {
