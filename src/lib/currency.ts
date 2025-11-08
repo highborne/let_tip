@@ -22,6 +22,7 @@ export type CurrencySymbolType = ValidCurrencySymbols | '?';
 
 export interface CurrencyState {
     code: CurrencyType;
+    locale: string;
     exchangeRateToBRL: number;
 }
 

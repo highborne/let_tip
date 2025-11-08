@@ -9,6 +9,7 @@ import { CURRENCY_MAP, CurrencyState, type CurrencyType } from '@/lib/currency';
 export const useBillSplitStore = defineStore('billSplit', () => {
     const selectedCurrency = ref<CurrencyState>({
         code: 'USD',
+        locale: 'en-US',
         exchangeRateToBRL: 0,   
     });
     const billStoreState = reactive<BillInitialInterface> ({
@@ -58,7 +59,6 @@ export const useBillSplitStore = defineStore('billSplit', () => {
     watch (
         () => selectedCurrency.value.code, 
         (newCurrencyCode) => {
-            console.log('WATCH STORE - Moeda mudou. Chamando Debounced Fetch...');
             debouncedFetchExchangeRate(newCurrencyCode);
         },
         {deep: true, immediate: true} 

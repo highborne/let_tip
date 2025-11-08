@@ -1,3 +1,5 @@
+export type SliderModelKeyType = 'tipPercentage' | 'numberOfPeople';
+
 export interface FormSwitchInterface {
   label: string,
   default: number,
@@ -5,5 +7,5 @@ export interface FormSwitchInterface {
   max: number,
   step?: number, 
   suffix?: string,
-  modelKey: 'tipPercentage' | 'numberOfPeople',
+  modelKey: SliderModelKeyType,
 }
