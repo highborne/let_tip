@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CurrencySymbolType } from '@/lib/types/commonTypes';
+import { CurrencySymbolType } from '@/lib/currency';
 
 interface Props {
   symbol: CurrencySymbolType
@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <span 
-    class="bill-switch__label" 
+    class="monetary-icon flex items-center justify-center" 
     :class="[props.sizeClass]"
   >
     {{ props.symbol }}
