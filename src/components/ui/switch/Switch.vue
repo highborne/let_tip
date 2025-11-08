@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 const props = defineProps({
   defaultValue: { type: Boolean, required: false },
   modelValue: { type: [Boolean, null], required: false },
-  
+
   disabled: { type: Boolean, required: false },
   id: { type: String, required: false },
   value: { type: String, required: false },
@@ -39,11 +39,11 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
       data-slot="switch-thumb"
       :class="
         cn(
-          'bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-7 ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0',
+          'bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-7 ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0'
         )
       "
     >
-       <slot name="thumb" />
+      <slot name="thumb" />
     </SwitchThumb>
   </SwitchRoot>
 </template>

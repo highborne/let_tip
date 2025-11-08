@@ -7,33 +7,33 @@ const billSplitStore = useBillSplitStore()
 const { billSplitResult, selectedCurrency } = storeToRefs(billSplitStore)
 
 const fieldsConfigs = [
-    {
-        label: "Conta",
-        modelKey: 'billValue',
-    },
-    {
-        label: "Gorjeta",
-        modelKey: 'tipValue',
-    },
-    {
-        label: "Total",
-        modelKey: 'billPlusTipTotal',
-    },
-    {
-        label: "Por Pessoa",
-        modelKey: 'perPerson',
-    },
-    {
-        label: "em R$",
-        modelKey: 'perPersonInBRL',
-        currency: 'BRL',
-    },
-];
+  {
+    label: 'Conta',
+    modelKey: 'billValue',
+  },
+  {
+    label: 'Gorjeta',
+    modelKey: 'tipValue',
+  },
+  {
+    label: 'Total',
+    modelKey: 'billPlusTipTotal',
+  },
+  {
+    label: 'Por Pessoa',
+    modelKey: 'perPerson',
+  },
+  {
+    label: 'em R$',
+    modelKey: 'perPersonInBRL',
+    currency: 'BRL',
+  },
+]
 </script>
 
 <template>
   <div class="split-bill-panel flex flex-col items-center gap-6 p-6 max-w-4xl">
-    <div class="split-bill-panel__list w-full flex flex-col gap-4">
+    <div class="split-bill-panel__list w-full flex flex-col gap-2">
       <SplitBillPanelField
         v-for="field in fieldsConfigs"
         :key="field.modelKey"

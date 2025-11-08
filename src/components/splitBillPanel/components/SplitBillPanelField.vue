@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
-import { useBillSplitStore } from '@/stores/billSpliteStore';
+import { storeToRefs } from 'pinia'
+import { useBillSplitStore } from '@/stores/billSpliteStore'
 import CurrencySymbol from '@/components/ui/currencySymbol/CurrencySymbol.vue'
-import { computed, watch } from 'vue';
-import { useCurrencyFormat } from '@/composables/useCurrencyFormat';
+import { computed } from 'vue'
+import { useCurrencyFormat } from '@/composables/useCurrencyFormat'
 
 interface Props {
   config: {
@@ -26,7 +26,7 @@ const { format } = useCurrencyFormat(effectiveCurrency.value)
 
 const formattedValue = computed(() => format(props.value || 0))
 </script>
- 
+
 <template>
   <div class="split-bill-panel-field flex justify-center items-center gap-1">
     <div class="split-bill-panel-field__symbol flex items-end">

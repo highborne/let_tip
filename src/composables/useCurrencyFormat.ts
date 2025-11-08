@@ -2,21 +2,27 @@ import { ref, computed } from 'vue'
 
 export function useCurrencyFormat(initialCurrency = 'BRL') {
   const currency = ref(initialCurrency)
-  
+
   const locale = computed(() => {
     switch (currency.value) {
-      case 'USD': return 'en-US'
-      case 'EUR': return 'de-DE'
-      default: return 'pt-BR'
+      case 'USD':
+        return 'en-US'
+      case 'EUR':
+        return 'de-DE'
+      default:
+        return 'pt-BR'
     }
   })
 
-  const formatter = computed(() => new Intl.NumberFormat(locale.value, {
-    style: 'decimal',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-    useGrouping: true,
-  }))
+  const formatter = computed(
+    () =>
+      new Intl.NumberFormat(locale.value, {
+        style: 'decimal',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+        useGrouping: true,
+      })
+  )
 
   function format(value: number | string | null | undefined): string {
     if (value === null || value === undefined || value === '') return ''
@@ -38,9 +44,9 @@ export function useCurrencyFormat(initialCurrency = 'BRL') {
     let clean = value.replace(/[^\d,.-]/g, '')
 
     if (isUSD) {
-      clean = clean.replace(/,/g, '') 
+      clean = clean.replace(/,/g, '')
     } else if (isEUR || isBRL) {
-      clean = clean.replace(/\./g, '').replace(/,/g, '.') 
+      clean = clean.replace(/\./g, '').replace(/,/g, '.')
     }
 
     const parsed = parseFloat(clean)
